@@ -46,7 +46,7 @@ void pngDraw(PNGDRAW *pDraw) {
 void displayImage(uint8_t *png_data, int length){
   //reset screen to black
   tft.fillScreen(TFT_BLACK);
-  int16_t rc = png.openRAM((uint8_t *)png_data, sizeof(uint8_t) * length, pngDraw);
+  int16_t rc = png.openRAM((uint8_t *)png_data, sizeof(uint8_t)*length, pngDraw);
   if (rc == PNG_SUCCESS) {
     tft.startWrite();
     rc = png.decode(NULL, 0);
@@ -133,7 +133,6 @@ int displayPlaying(){
       return res.code;
     }
     //Cast string to uint and the draw array
-    Serial.printf("Length of payload: %d\n", res.payload.length());
     std::vector<uint8_t> buffer(res.payload.begin(), res.payload.end());
     uint8_t* pic = buffer.data();
     
